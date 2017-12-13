@@ -24,4 +24,45 @@ public class Progress {
     @ManyToOne
     private Reward reward;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Reward getReward() {
+        return reward;
+    }
+
+    public void setReward(Reward reward) {
+        this.reward = reward;
+    }
+
+    @Override
+    public String toString() {
+        return "Progress{" +
+                "id=" + id +
+                ", value=" + value +
+                ", users=" + users +
+                ", reward=" + reward +
+                '}';
+    }
 }
