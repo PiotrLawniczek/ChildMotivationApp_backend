@@ -18,7 +18,7 @@ public class Progress {
     @Column
     private int value;
 
-    @OneToMany(mappedBy = "progress")
+    @OneToMany(mappedBy = "progress", fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
 
     @ManyToOne

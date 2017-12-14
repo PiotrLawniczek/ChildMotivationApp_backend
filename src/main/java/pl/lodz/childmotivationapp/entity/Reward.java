@@ -19,7 +19,7 @@ public class Reward {
     private String name;
     private int price;
 
-    @OneToMany(mappedBy = "reward")
+    @OneToMany(mappedBy = "reward", fetch = FetchType.EAGER)
     private Set<Progress> progresses = new HashSet<>();
 
     public long getId() {

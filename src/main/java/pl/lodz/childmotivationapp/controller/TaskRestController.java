@@ -1,5 +1,7 @@
 package pl.lodz.childmotivationapp.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,9 @@ import java.util.List;
 @RequestMapping("/api/task")
 public class TaskRestController {
 
+
+    public static final Logger log = LoggerFactory.getLogger(TaskRestController.class);
+
     @Autowired
     private TaskService taskService;
 
@@ -25,19 +30,19 @@ public class TaskRestController {
         List<Task> tasks = taskService.getAll();
         System.out.println(tasks);
         if(tasks.isEmpty()){
-            return new ResponseEntity<List<Task>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
         public ResponseEntity<Task> getTask( @PathVariable("id") long id){
-            System.out.println("get single user with id= " + id);
+            log.debug("get single user with id= " + id);
             Task task = taskService.getTask(id);
             if(task == null){
-                return new ResponseEntity<Task>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-        return new ResponseEntity<Task>(task, HttpStatus.OK);
+        return new ResponseEntity<>(task, HttpStatus.OK);
         }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -46,7 +51,7 @@ public class TaskRestController {
     /////brak walidacji z istniejacym taskiem !
             taskService.addTask(task);
 
-            return new ResponseEntity<Void>(HttpStatus.CREATED);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         }
 
 
@@ -57,10 +62,10 @@ public class TaskRestController {
         Task task = taskService.getTask(id);
         if(task== null){
             System.out.println("cannot delete, user not exist");
-            return new ResponseEntity<Task>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         taskService.removeTask(id);
-        return new ResponseEntity<Task>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
