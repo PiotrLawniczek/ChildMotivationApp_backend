@@ -8,4 +8,5 @@ import pl.lodz.childmotivationapp.entity.UserRole;
  */
 public interface UserRoleRepository  extends JpaRepository<UserRole, Long> {
     UserRole findById(long id);
+    UserRole findByName(String name);
 }
