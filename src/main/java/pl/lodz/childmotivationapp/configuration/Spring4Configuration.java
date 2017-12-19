@@ -4,6 +4,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.format.FormatterRegistry;
@@ -32,6 +33,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = "pl.lodz.childmotivationapp")
 @EnableJpaRepositories(basePackages = {"pl.lodz.childmotivationapp.repository"})
 @EnableTransactionManagement
+@Import({SecurityConfiguration.class})
 public class Spring4Configuration extends WebMvcConfigurerAdapter {
 
     @Bean
