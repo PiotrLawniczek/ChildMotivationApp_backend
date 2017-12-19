@@ -34,10 +34,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUser(User user) {
-/*        if(user.getId() > 0) {
+       if(user.getId() > 0) {
             user.setPassword(hashPassword(user.getPassword()));
             userRepository.save(user);
-        }*/
+        }
     }
 
     @Override
