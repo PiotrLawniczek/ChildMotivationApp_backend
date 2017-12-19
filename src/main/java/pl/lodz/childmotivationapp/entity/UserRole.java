@@ -1,8 +1,6 @@
 package pl.lodz.childmotivationapp.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by elawpio on 2017-12-11.
@@ -17,8 +15,10 @@ public class UserRole {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "userRoles")
+/*
+   @ManyToMany(mappedBy = "userRoles")
     private Set<User> employees = new HashSet<>();
+*/
 
     public long getId() {
         return id;
@@ -36,6 +36,8 @@ public class UserRole {
         this.name = name;
     }
 
+
+/*
     public Set<User> getEmployees() {
         return employees;
     }
@@ -43,13 +45,15 @@ public class UserRole {
     public void setEmployees(Set<User> employees) {
         this.employees = employees;
     }
+*/
 
-    @Override
+
+/*    @Override
     public String toString() {
         return "UserRole{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", employees=" + employees +
                 '}';
-    }
+    }*/
 }
